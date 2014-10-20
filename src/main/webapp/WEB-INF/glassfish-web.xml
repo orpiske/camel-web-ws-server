@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD 
+GlassFish Application Server 3.1 Servlet 3.0//EN"
+        "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
+
+<glassfish-web-app>
+        <context-root>camel-cxf-web</context-root>
+
+<!--
+ This is required because CXF Interceptors. Taken from the CXF documentation:
+ 
+"CXF Interceptors will not work in Glassfish without this sun-web.xml file to configure 
+ the classloader. By default, Glassfish will use Metro for JAX-WS services so the 
+ classloader needs to be configured to allow CXF libraries to provide JAX-WS services ..
+  
+ Source: http://cxf.apache.org/docs/application-server-specific-configuration-guide.html#ApplicationServerSpecificConfigurationGuide-Glassfish
+ -->
+        <class-loader delegate="false"/>
+</glassfish-web-app>
+        
