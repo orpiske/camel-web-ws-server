@@ -13,7 +13,7 @@ public class TimeServiceRoute extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("cxf:/TimeService?dataFormat=POJO&serviceClass=" 
+		from("cxf:/TimeService?dataFormat=POJO&loggingFeatureEnabled=true&serviceClass=" 
 				 + TimeService.class.getName())
 			.routeId("TimeService")
 			.process(new TimeServiceProcessor());
