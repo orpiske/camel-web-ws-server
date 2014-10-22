@@ -9,14 +9,11 @@ import org.apache.log4j.Logger;
  * Created by orpiske on 20/10/14.
  */
 public class TimeServiceRoute extends RouteBuilder {
-	private static final Logger logger = Logger.getLogger(TimeServiceRoute.class);
-
 	@Override
 	public void configure() throws Exception {
-		from("cxf:/TimeService?dataFormat=POJO&loggingFeatureEnabled=true&serviceClass=" 
+		from("cxf:/TimeService?loggingFeatureEnabled=true&serviceClass=" 
 				 + TimeService.class.getName())
 			.routeId("TimeService")
 			.process(new TimeServiceProcessor());
-			
 	}
 }
