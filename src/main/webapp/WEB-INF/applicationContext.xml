@@ -1,4 +1,3 @@
-<!-- START SNIPPET: e1 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:camel="http://camel.apache.org/schema/spring"
@@ -10,10 +9,13 @@
     <!-- We still need it for loading the CXFServlet -->
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
 
+    <!-- The declared routes --> 
     <bean id="TimeService" class="net.orpiske.camel.cxf.web.example.routes.TimeServiceRoute"/>
+    <bean id="TimeServiceBean" class="net.orpiske.camel.cxf.web.example.routes.TimeServiceRouteBean"/>
 
+    <!-- Add the routes to the Camel Context -->
     <camelContext xmlns="http://camel.apache.org/schema/spring">
         <routeBuilder ref="TimeService"/>
+        <routeBuilder ref="TimeServiceBean"/>
     </camelContext>
-
 </beans>
