@@ -1,10 +1,8 @@
 package net.orpiske.camel.cxf.web.example.routes;
 
-import org.apache.log4j.Logger;
 import net.orpiske.examples.cxf.webservice.TimeService;
 import net.orpiske.camel.cxf.web.example.bean.TimeServiceBean;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.log4j.Logger;
 
 
 /**
