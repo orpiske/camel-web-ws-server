@@ -5,15 +5,12 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.cxf.message.MessageContentsList;
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Controller;
 
 /**
  * Created by orpiske on 20/10/14.
  */
-@Controller
 public class TimeServiceProcessor implements Processor {
 	private static final Logger logger = Logger.getLogger(TimeServiceProcessor.class);
-	
 	
 	@Override
 	public void process(Exchange exchange) throws Exception {
@@ -22,8 +19,14 @@ public class TimeServiceProcessor implements Processor {
 		Object object = exchange.getIn().getBody();
 
 		if (object instanceof MessageContentsList) {
-			MessageContentsList messageContentsList = (MessageContentsList) object;
-			
+			/**
+			 * If we needed to get the contents of the message, we could do this:
+			 * 
+			 * MessageContentsList messageContentsList = (MessageContentsList) object;
+			 * 
+			 * Holder<DataType> someData = (Holder<DataType>)  messageContentsList.get(<pos>);
+			 */
+						
 			exchange.getOut().setBody(new Object[] { new TimeServiceBean().timeService() } );
 
 			logger.debug("Setting up reply message");
@@ -32,6 +35,5 @@ public class TimeServiceProcessor implements Processor {
 			logger.error("Unhandled message type: " + (object == null ? "null"
 																	  : object.getClass()));
 		}
-		
 	}
 }
